@@ -1,0 +1,105 @@
+
+<!--
+Copyright (c) 2015 TELCAT MULTICOM GmbH. All rights reserved.
+Copyright (c) 2016 conpinion GbR. All rights reserved.
+
+Element: conpinion-header-tabs
+Version: 0.2.0
+Description: A header tabs component
+-->
+
+
+<link rel="import" href="../paper-tabs/paper-tab.html">
+<link rel="import" href="../paper-tabs/paper-tabs.html">
+
+<dom-module id="conpinion-header-tab">
+
+<script type="text/javascript">(function() {
+  Polymer({
+    is: 'conpinion-header-tab',
+    properties: {
+      route: {
+        type: String
+      },
+      name: {
+        type: String
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</dom-module>
+
+<dom-module id="conpinion-header-tabs">
+
+  <template>
+<style></style>
+
+    <template is="dom-if" if="[[render]]">
+      <paper-tabs id="tabs" selected="{{selected}}" attr-for-selected="data-name"
+                  on-iron-activate="route">
+        <template is="dom-repeat" items="[[tabs]]">
+          <paper-tab data-name$="[[item.name]]" data-route$="[[item.route]]">[[item.innerText]]</paper-tab>
+        </template>
+      </paper-tabs>
+    </template>
+  </template>
+
+<script type="text/javascript">(function() {
+  var renderInstance, tabs;
+
+  renderInstance = null;
+
+  tabs = [];
+
+  Polymer({
+    is: 'conpinion-header-tabs',
+    properties: {
+      render: {
+        type: Boolean,
+        value: false
+      },
+      router: {
+        type: Object
+      },
+      selected: {
+        type: String
+      }
+    },
+    ready: function() {
+      if (this.render) {
+        renderInstance = this;
+      }
+      if (!this.render) {
+        tabs = Polymer.dom(this).querySelectorAll('conpinion-header-tab');
+      }
+      if (renderInstance) {
+        return renderInstance.updateTabs();
+      }
+    },
+    updateTabs: function() {
+      this.tabs = tabs;
+      return this.async((function(_this) {
+        return function() {
+          var tmp;
+          tmp = _this.selected;
+          _this.selected = null;
+          return _this.selected = tmp;
+        };
+      })(this), 1);
+    },
+    route: function(e) {
+      var route;
+      route = e.detail.item.getAttribute('data-route');
+      if (route) {
+        return this.router.go(route);
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</dom-module>

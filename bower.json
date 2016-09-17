@@ -1,0 +1,42 @@
+{
+  "name": "conpinion-header-tabs",
+  "description": "A header tabs component",
+  "version": "0.2.0",
+  "main": "conpinion-header-tabs.html",
+  "license": "MIT",
+  "ignore": [
+    "bin",
+    "build",
+    "lib",
+    "node_modules",
+    "src",
+    "test",
+    "tmpl",
+    "package.json",
+    "**/.*",
+    "**/*.log",
+    "**/*.sublime-*",
+    "atlassian-ide-plugin.xml"
+  ],
+  "keywords": [
+    "web-components"
+  ],
+  "authors": [
+    "Dirk Grappendorf <dirk.grappendorf@conpinion.de>",
+    "Tim Völpel <tim.voelpel@conpinion.de>"
+  ],
+  "homepage": "https://github.com/conpinion/conpinion-header-tabs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conpinion/conpinion-header-tabs.git"
+  },
+  "dependencies": {
+    "paper-tabs": "PolymerElements/paper-tabs#^1.0.0"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "jquery": "^2.1.4",
+    "web-component-tester": "Polymer/web-component-tester#^3.3.21",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0"
+  }
+}

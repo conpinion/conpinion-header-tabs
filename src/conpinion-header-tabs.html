@@ -1,0 +1,42 @@
+<!-- build:process -->
+<!--
+<%= copyright %>
+Element: <%= pkg.name %>
+Version: <%= pkg.version %>
+Description: <%= pkg.description %>
+-->
+<!-- /build -->
+
+<link rel="import" href="../lib/paper-tabs/paper-tab.html">
+<link rel="import" href="../lib/paper-tabs/paper-tabs.html">
+
+<dom-module id="conpinion-header-tab">
+
+  <!-- build:script inline conpinion-header-tab -->
+  <script src="conpinion-header-tab.js"></script>
+  <!-- /build -->
+
+</dom-module>
+
+<dom-module id="conpinion-header-tabs">
+
+  <template>
+    <!-- build:style inline conpinion-header-tabs -->
+    <link rel="stylesheet" href="conpinion-header-tabs.css">
+    <!-- /build -->
+
+    <template is="dom-if" if="[[render]]">
+      <paper-tabs id="tabs" selected="{{selected}}" attr-for-selected="data-name"
+                  on-iron-activate="route">
+        <template is="dom-repeat" items="[[tabs]]">
+          <paper-tab data-name$="[[item.name]]" data-route$="[[item.route]]">[[item.innerText]]</paper-tab>
+        </template>
+      </paper-tabs>
+    </template>
+  </template>
+
+  <!-- build:script inline conpinion-header-tabs  -->
+  <script src="conpinion-header-tabs.js"></script>
+  <!-- /build -->
+
+</dom-module>
